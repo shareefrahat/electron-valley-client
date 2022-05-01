@@ -21,11 +21,17 @@ const Header = () => {
             <Navbar></Navbar>
           </section>
           <section>
-            <Link to="/login">LOGIN</Link>
+            <Link
+              to="/login"
+              className="bg-blue-700 text-slate-100 text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded"
+            >
+              LOGIN
+            </Link>
           </section>
         </div>
         <div>
           <section
+            onClick={() => setOpen(!open)}
             className={`block lg:hidden absolute inset-y-0 bg-white py-5 px-10 text-left shadow-md transition-all duration-1000 ${
               open ? "left-0 top-0" : "left-[-200px]"
             }`}
