@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MenuAlt2Icon, MenuIcon } from "@heroicons/react/solid";
+import { MenuAlt1Icon, MenuIcon } from "@heroicons/react/solid";
 
 import logo from "../../images/logo.png";
 import Navbar from "../Navbar/Navbar";
@@ -14,7 +14,7 @@ const Header = () => {
           <section className="block lg:hidden ">
             <div onClick={() => setOpen(!open)}>
               {open ? (
-                <MenuAlt2Icon className="w-7 text-blue-600"></MenuAlt2Icon>
+                <MenuAlt1Icon className="w-7 text-blue-600"></MenuAlt1Icon>
               ) : (
                 <MenuIcon className="w-7 text-blue-700"></MenuIcon>
               )}
@@ -38,7 +38,7 @@ const Header = () => {
         <div>
           <section
             onClick={() => setOpen(!open)}
-            className={`block lg:hidden absolute top-10 mt-5 inset-y-0 bg-blue-700 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-1000 ${
+            className={`block lg:hidden absolute top-10 mt-5 inset-y-0 bg-blue-800 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-1000 ${
               open ? "left-0 top-0" : "left-[-200px]"
             }`}
           >
