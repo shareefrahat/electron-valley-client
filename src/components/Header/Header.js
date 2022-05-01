@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { MenuAlt2Icon, MenuIcon } from "@heroicons/react/solid";
+
 import logo from "../../images/logo.png";
 import Navbar from "../Navbar/Navbar";
 const Header = () => {
@@ -8,11 +10,15 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="bg-white flex flex-row justify-between items-center px-4 lg:px-10 py-2 lg:py-4 shadow-md">
-          <section className="block lg:hidden">
-            <span onClick={() => setOpen(!open)}>
-              {open ? "Close" : "Menu"}
-            </span>
+        <div className="bg-white flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-4 shadow-md">
+          <section className="block lg:hidden ">
+            <div onClick={() => setOpen(!open)}>
+              {open ? (
+                <MenuAlt2Icon className="w-7 text-blue-600"></MenuAlt2Icon>
+              ) : (
+                <MenuIcon className="w-7 text-blue-700"></MenuIcon>
+              )}
+            </div>
           </section>
           <section>
             <img className="w-[200px] lg:w-[250px]" src={logo} alt="" />
@@ -32,11 +38,10 @@ const Header = () => {
         <div>
           <section
             onClick={() => setOpen(!open)}
-            className={`block lg:hidden absolute inset-y-0 bg-white py-5 px-10 text-left shadow-md transition-all duration-1000 ${
+            className={`block lg:hidden absolute top-10 mt-5 inset-y-0 bg-blue-700 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-1000 ${
               open ? "left-0 top-0" : "left-[-200px]"
             }`}
           >
-            <div onClick={() => setOpen(!open)}>X</div>
             <Navbar></Navbar>
           </section>
         </div>
