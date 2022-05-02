@@ -39,7 +39,7 @@ const Header = () => {
           <section
             onClick={() => setOpen(!open)}
             className={`block lg:hidden absolute top-10 mt-5 inset-y-0 bg-blue-800 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-1000 ${
-              open ? "left-0 top-0" : "left-[-200px]"
+              open ? "left-0 " : "left-[-200px]"
             }`}
           >
             <Navbar></Navbar>
