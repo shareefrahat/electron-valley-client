@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="bg-white flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-4 shadow-md">
+        <div className="bg-white flex flex-row justify-between items-center px-4 lg:px-10 py-3  shadow-md relative z-40">
           <section className="block lg:hidden ">
             <div onClick={() => setOpen(!open)}>
               {open ? (
@@ -35,10 +35,10 @@ const Header = () => {
             </Link>
           </section>
         </div>
-        <div>
+        <div className="">
           <section
             onClick={() => setOpen(!open)}
-            className={`block lg:hidden absolute top-10 mt-5 inset-y-0 bg-blue-800 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-1000 ${
+            className={`z-30 block lg:hidden absolute top-10 mt-5 inset-y-0 bg-blue-800 py-5 pl-6 pr-16 text-left shadow-md transition-all duration-1000 ${
               open ? "left-0 " : "left-[-200px]"
             }`}
           >
