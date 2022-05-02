@@ -21,16 +21,16 @@ const Suppliers = () => {
   return (
     <>
       <div>
-        <p className="text-left text-md lg:text-xl font-semibold mb-2">
+        <p className="text-left text-md lg:text-xl font-semibold mb-2 text-blue-700">
           TOP SUPPLIERS
         </p>
       </div>
-      <hr className="bg-slate-400 h-[1.5px] mb-10" />
-      <div className="flex flex-col lg:flex-row gap-5 justify-evenly items-center">
+      <hr className="bg-slate-400 h-[1.5px] mb-6 lg:mb-8" />
+      <div className="grid grid-cols-2 w-fit mx-auto lg:grid-cols-7 gap-5 lg:gap-10 justify-evenly items-center">
         {suppliers.map((supplier) => (
           <div key={supplier.id}>
-            <div className="border border-slate-400 p-4 w-fit grayscale hover:grayscale-0 transition duration-300 hover:-translate-y-1 hover:scale-110 ">
-              <img className=" w-[100px]  h-4" src={supplier.img} alt="" />
+            <div className="border border-slate-400 hover:border-orange-600 p-4 w-fit grayscale hover:grayscale-0 transition duration-300 hover:-translate-y-1 hover:scale-110">
+              <img className=" w-[100px] h-4" src={supplier.img} alt="" />
             </div>
           </div>
         ))}
