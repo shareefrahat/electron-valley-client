@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
-const Login = () => {
+const Signup = () => {
   return (
     <>
       <div className="my-10 mx-10">
@@ -12,18 +12,34 @@ const Login = () => {
               <div className="flex flex-row justify-evenly items-center rounded bg-gray-200 font-serif font-medium mb-2">
                 <Link
                   to="/login"
-                  className="bg-blue-700 text-white px-4 py-2 w-full rounded"
+                  className="text-black px-4 py-2 w-full rounded hover:text-blue-700"
                 >
                   <span>Login</span>
                 </Link>
                 <Link
                   to="/signup"
-                  className="text-black px-4 py-2 w-full rounded hover:text-blue-700"
+                  className="bg-blue-700 text-white px-4 py-2 w-full rounded"
                 >
                   <span>Signup</span>
                 </Link>
               </div>
             </section>
+            <div>
+              <label
+                htmlFor="name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 text-left"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Name"
+                required
+              />
+            </div>
             <div>
               <label
                 htmlFor="email"
@@ -56,6 +72,22 @@ const Login = () => {
                 required
               />
             </div>
+            <div>
+              <label
+                htmlFor="confirm-password"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 text-left"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                name="ConfirmPassword"
+                id="confirm-password"
+                placeholder="••••••••"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
+              />
+            </div>
             <div className="flex items-start">
               <div className="flex items-start">
                 <div className="flex items-center h-5">
@@ -71,14 +103,14 @@ const Login = () => {
                   htmlFor="remember"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  Remember me
+                  I agree with policy
                 </label>
               </div>
               <a
                 href="/"
                 className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
               >
-                Lost Password?
+                Terms & conditions
               </a>
             </div>
             <button
@@ -88,12 +120,12 @@ const Login = () => {
               Login
             </button>
             <div className="text-sm font-medium text-gray-500 dark:text-gray-300 text-left">
-              Not registered?{" "}
+              Already registered?{" "}
               <Link
-                to="/signup"
+                to="/login"
                 className="text-blue-700 hover:underline dark:text-blue-500"
               >
-                Create account
+                Login here
               </Link>
             </div>
           </form>
@@ -119,4 +151,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
