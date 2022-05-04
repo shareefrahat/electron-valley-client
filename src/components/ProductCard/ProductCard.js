@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { name, img, price, supplier, quantity, description } = product;
+  const { _id, name, img, price, supplier, quantity, description } = product;
   return (
     <>
       <div
@@ -37,10 +37,10 @@ const ProductCard = ({ product }) => {
             {description}
           </p>
         </div>
-        <div className="mt-5">
+        <div className="mt-10">
           <Link
-            to="inventory/:id"
-            className="bg-blue-700 text-white text-md lg:text-xl px-2 lg:px-4 py-1 rounded hover:bg-orange-600 mt-4"
+            to={`inventory/${_id}`}
+            className="bg-blue-700 text-white text-md lg:text-2xl px-2 lg:px-4 py-1 rounded hover:bg-orange-600 mt-4"
           >
             Update
           </Link>

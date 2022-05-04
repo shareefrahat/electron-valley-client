@@ -5,7 +5,8 @@ import Spinner from "../Spinner/Spinner";
 
 const Products = () => {
   const [products] = useProducts();
-  console.log(products);
+
+  const inventoryGoods = products?.slice(0, 6);
   return (
     <>
       <div>
@@ -21,7 +22,7 @@ const Products = () => {
           </div>
         ) : (
           <div className="grid gird-cols-1 lg:grid-cols-3 gap-10 w-fit mx-auto">
-            {products.map((product) => (
+            {inventoryGoods.map((product) => (
               <ProductCard key={product._id} product={product}></ProductCard>
             ))}
           </div>
