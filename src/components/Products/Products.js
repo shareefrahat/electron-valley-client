@@ -1,5 +1,6 @@
 import React from "react";
 import useProducts from "../../hooks/useProducts";
+import ProductCard from "../ProductCard/ProductCard";
 import Spinner from "../Spinner/Spinner";
 
 const Products = () => {
@@ -19,9 +20,9 @@ const Products = () => {
             <Spinner></Spinner>
           </div>
         ) : (
-          <div>
+          <div className="grid gird-cols-1 lg:grid-cols-3 gap-10 w-fit mx-auto">
             {products.map((product) => (
-              <div key={product._id}>{product.name}</div>
+              <ProductCard key={product._id} product={product}></ProductCard>
             ))}
           </div>
         )}
