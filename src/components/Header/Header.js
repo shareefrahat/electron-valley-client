@@ -21,7 +21,10 @@ const Header = () => {
             </div>
           </section>
           <section>
-            <img className="w-[200px] lg:w-[250px]" src={logo} alt="" />
+            <Link to="/">
+              {" "}
+              <img className="w-[200px] lg:w-[250px]" src={logo} alt="" />
+            </Link>
           </section>
           <section className="lg:order-none hidden lg:block">
             <Navbar></Navbar>

@@ -17,7 +17,6 @@ const Suppliers = () => {
     { id: 6, name: "PANASONIC", img: panasonic },
     { id: 7, name: "LENEVO", img: lenovo },
   ];
-  console.log(suppliers);
   return (
     <>
       <div>

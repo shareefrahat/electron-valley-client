@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner/Banner";
+import Products from "../../components/Products/Products";
 import Services from "../../components/Services/Services";
 import Suppliers from "../../components/Suppliers/Suppliers";
 
@@ -8,6 +9,9 @@ const Home = () => {
     <>
       <section className="">
         <Banner></Banner>
+      </section>
+      <section className="my-20 px-5 lg:px-10">
+        <Products></Products>
       </section>
       <section className="my-20 px-5 lg:px-10">
         <Services></Services>
