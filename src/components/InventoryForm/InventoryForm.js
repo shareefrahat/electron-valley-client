@@ -2,31 +2,13 @@ import React, { useState } from "react";
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 
 const InventoryForm = ({ product }) => {
-  const { name, supplier, price, quantity } = product;
+  const { _id, name, supplier, price, quantity } = product;
   let [update, setUpdate] = useState({
     name,
     supplier,
     price,
     quantity,
   });
-
-  // const handleDeliver = (id) => {
-
-  //   console.log(quantity);
-
-  //   const product = { quantity };
-  //   console.log(product);
-  //   const url = `http://localhost:5000/products/:${id}`;
-  //   fetch(url, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(product),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // };
 
   const handleName = (e) => {
     const { name, ...rest } = update;
@@ -56,23 +38,39 @@ const InventoryForm = ({ product }) => {
     setUpdate(newProduct);
   };
 
-  console.log(update);
-
   const handleDelivered = () => {
     let { quantity, ...rest } = update;
     const newQuantity = --quantity;
     if (quantity <= 0) {
       return;
     }
-    console.log(newQuantity);
     const newProduct = { quantity: newQuantity, ...rest };
     setUpdate(newProduct);
+  };
+
+  console.log(typeof update);
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const url = `http://localhost:5000/update/${_id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(update),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert("Products updated Successfully");
+        console.log("Success:", data);
+      });
   };
 
   return (
     <>
       <div>
-        <form className="text-left w-1/2 mx-auto my-10">
+        <form onSubmit={handleUpdate} className="text-left w-1/2 mx-auto my-10">
           <div className="mb-6">
             <label
               htmlFor="name"
