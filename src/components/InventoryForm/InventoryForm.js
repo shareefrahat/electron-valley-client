@@ -34,55 +34,42 @@ const InventoryForm = ({ product }) => {
 
   const handleQuantity = (e) => {
     const { quantity, ...rest } = update;
-    const newQuantity = e.target.value;
+    const newQuantity = parseInt(e.target.value);
     const newProduct = { quantity: newQuantity, ...rest };
     setUpdate(newProduct);
   };
 
   const handleDelivered = () => {
-    let { quantity, ...rest } = update;
-    const newQuantity = --quantity;
-    if (quantity <= 0) {
-      return;
-    }
+    const { quantity, ...rest } = update;
+    const newQuantity = quantity - 1;
     const newProduct = { quantity: newQuantity, ...rest };
     setUpdate(newProduct);
-    const url = `http://localhost:5000/update/${_id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(update),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        alert("Products Quantity added");
-
-        console.log("Success:", data);
-      });
+    handleFetch();
   };
 
   const handleNewValue = (e) => {
     const value = parseInt(e.target.value);
-    console.log(value);
-    if (value === 0 || value === "") {
-      return;
-    }
+
     setNewValue(value);
   };
 
   const addNewQuantity = () => {
     const { quantity, ...rest } = update;
+    if (newValue === 0 || newValue === "") {
+      return;
+    }
     const newQuantity = quantity + newValue;
     const newProduct = { quantity: newQuantity, ...rest };
     setUpdate(newProduct);
+    handleFetch();
   };
-
-  console.log(typeof update);
 
   const handleUpdate = (e) => {
     e.preventDefault();
+    handleFetch();
+  };
+
+  const handleFetch = () => {
     const url = `http://localhost:5000/update/${_id}`;
     fetch(url, {
       method: "PUT",
@@ -94,7 +81,6 @@ const InventoryForm = ({ product }) => {
       .then((response) => response.json())
       .then((data) => {
         alert("Products updated Successfully");
-
         console.log("Success:", data);
       });
   };
@@ -169,7 +155,7 @@ const InventoryForm = ({ product }) => {
                 name="quantity"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 value={update.quantity}
-                required
+                readOnly
               />
             </div>
             <div className="w-1/2 mx-5">
@@ -198,7 +184,6 @@ const InventoryForm = ({ product }) => {
                 name="new-quantity"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter new amount"
-                required
               />
             </div>
             <div className="w-1/2 mx-5">
