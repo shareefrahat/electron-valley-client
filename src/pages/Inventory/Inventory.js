@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import InventoryForm from "../../components/InventoryForm/InventoryForm";
 import Spinner from "../../components/Spinner/Spinner";
 import useProducts from "../../hooks/useProducts";
 
@@ -17,7 +18,12 @@ const Inventory = () => {
             <Spinner></Spinner>
           </div>
         ) : (
-          <div>Product id: {selectedProduct?.name}</div>
+          <div>
+            <InventoryForm
+              key={selectedProduct._id}
+              product={selectedProduct}
+            ></InventoryForm>
+          </div>
         )}
       </section>
     </>
