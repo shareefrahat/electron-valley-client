@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -8,6 +8,10 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../firebase.init";
 
 const Signup = () => {
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [passwordInput, setPasswordInput] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
@@ -15,15 +19,30 @@ const Signup = () => {
   if (user) {
   }
 
+  const handlePassword = (e) => {
+    const password = e.target.value;
+    setPasswordInput(password);
+  };
+
+  const handleConfirmPassword = (e) => {
+    const confirmPassword = e.target.value;
+    setConfirmPassword(confirmPassword);
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
-
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    await createUserWithEmailAndPassword(email, password);
-    await updateProfile({ displayName: name });
+    if (passwordInput !== confirmPassword) {
+      setPasswordMatch(!true);
+      return;
+    } else {
+      setPasswordMatch(true);
+      await createUserWithEmailAndPassword(email, password);
+      await updateProfile({ displayName: name });
+    }
   };
   return (
     <>
@@ -89,6 +108,7 @@ const Signup = () => {
                 Password
               </label>
               <input
+                onChange={handlePassword}
                 type="password"
                 name="password"
                 id="password"
@@ -105,6 +125,7 @@ const Signup = () => {
                 Confirm Password
               </label>
               <input
+                onChange={handleConfirmPassword}
                 type="password"
                 name="ConfirmPassword"
                 id="confirm-password"
@@ -112,6 +133,15 @@ const Signup = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required
               />
+              <div>
+                {!passwordMatch ? (
+                  <p className="my-2 text-left text-red-700">
+                    Password not matched
+                  </p>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
             <div className="flex items-start">
               <div className="flex items-start">
