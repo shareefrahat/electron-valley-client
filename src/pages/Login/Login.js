@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import auth from "../../firebase.init";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  if (user) {
+    console.log(user);
+  }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(email, password);
+  };
   return (
     <>
       <div className="my-10 mx-10">
         <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto">
-          <form className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6">
             <section>
               <div className="flex flex-row justify-evenly items-center rounded bg-gray-200 font-serif font-medium mb-2">
                 <Link
@@ -37,6 +52,8 @@ const Login = () => {
                 id="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="name@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -53,6 +70,8 @@ const Login = () => {
                 id="password"
                 placeholder="••••••••"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
@@ -74,18 +93,15 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <a
-                href="/"
-                className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-              >
+              <p className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">
                 Lost Password?
-              </a>
+              </p>
             </div>
             <button
               type="submit"
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded"
             >
-              Login
+              {loading ? "Loading..." : "Login"}
             </button>
             <div className="text-sm font-medium text-gray-500 dark:text-gray-300 text-left">
               Not registered?{" "}
