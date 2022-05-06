@@ -6,7 +6,7 @@ const AddProduct = () => {
   return (
     <div>
       <div className="flex flex-row">
-        <section className="w-fit h-[1000px] px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
+        <section className="w-fit relative inset-y-0  px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
           <h2 className="text-2xl text-blue-700 font-bold">Manage Product</h2>
           <div>
             <Link
