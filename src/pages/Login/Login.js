@@ -12,8 +12,8 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   if (user) {
-    console.log(user);
   }
+
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
@@ -39,6 +39,9 @@ const Login = () => {
                 </Link>
               </div>
             </section>
+            <div>
+              {error ? <p className="text-red-700">{error?.message}</p> : ""}
+            </div>
             <div>
               <label
                 htmlFor="email"

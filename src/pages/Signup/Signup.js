@@ -13,7 +13,6 @@ const Signup = () => {
   const [updateProfile] = useUpdateProfile(auth);
 
   if (user) {
-    console.log(user);
   }
 
   const handleSignUp = async (e) => {
@@ -47,6 +46,9 @@ const Signup = () => {
                 </Link>
               </div>
             </section>
+            <div>
+              {error ? <p className="text-red-700">{error?.message}</p> : ""}
+            </div>
             <div>
               <label
                 htmlFor="name"
