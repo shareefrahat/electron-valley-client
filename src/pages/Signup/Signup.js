@@ -1,13 +1,32 @@
 import React from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import auth from "../../firebase.init";
 
 const Signup = () => {
+  const [createUserWithEmailAndPassword, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile] = useUpdateProfile(auth);
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+  };
   return (
     <>
       <div className="my-10 mx-10">
         <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto">
-          <form className="space-y-6">
+          <form onSubmit={handleSignUp} className="space-y-6">
             <section>
               <div className="flex flex-row justify-evenly items-center rounded bg-gray-200 font-serif font-medium mb-2">
                 <Link
