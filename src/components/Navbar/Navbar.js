@@ -21,13 +21,13 @@ const Navbar = () => {
     {
       id: 3,
       path: "/manage",
-      name: "MANAGE ITEMS",
+      name: "MANAGE",
       route: "private",
     },
     {
       id: 4,
       path: "/addProduct",
-      name: "ADD ITEMS",
+      name: "ADD",
       route: "private",
     },
     {
@@ -36,13 +36,18 @@ const Navbar = () => {
       name: "MY ITEMS",
       route: "private",
     },
+    {
+      id: 6,
+      path: "/about",
+      name: "ABOUT",
+      route: "public",
+    },
   ];
 
   let routes;
 
   if (!user) {
     routes = links.filter((link) => link.route === "public");
-    console.log(routes);
   } else {
     routes = links;
   }

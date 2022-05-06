@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="mt-10">
           <Link
-            to={`inventory/${_id}`}
+            to={`/inventory/${_id}`}
             className="bg-blue-700 text-white text-md lg:text-2xl px-2 lg:px-4 py-1 rounded hover:bg-orange-600 mt-4"
           >
             Update

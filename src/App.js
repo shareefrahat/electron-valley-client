@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ProductList from "./components/ProductList/ProductList";
+import About from "./pages/About/About";
 import Home from "./pages/Home/Home";
 import Inventory from "./pages/Inventory/Inventory";
 import Login from "./pages/Login/Login";
@@ -72,6 +73,7 @@ function App() {
             </PrivateRoute>
           }
         ></Route>
+        <Route path="/about" element={<About></About>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

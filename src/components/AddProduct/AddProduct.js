@@ -1,10 +1,14 @@
 import { ClipboardListIcon, PlusCircleIcon } from "@heroicons/react/solid";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const AddProduct = () => {
+  const [user] = useAuthState(auth);
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const owner = user?.email;
     const name = e.target.name.value;
     const img = e.target.img.value;
     const supplier = e.target.supplier.value;
@@ -12,9 +16,15 @@ const AddProduct = () => {
     const quantity = e.target.quantity.value;
     const description = e.target.details.value;
 
-    const product = { name, img, supplier, price, quantity, description };
-
-    console.log(product);
+    const product = {
+      owner,
+      name,
+      img,
+      supplier,
+      price,
+      quantity,
+      description,
+    };
 
     fetch("http://localhost:5000/products", {
       method: "POST",
@@ -57,6 +67,12 @@ const AddProduct = () => {
         <section className="w-full lg:px-20 py-10">
           <div className="shadow-md sm:rounded-lg border border-blue-700 p-5 text-left ">
             <form onSubmit={handleOnSubmit}>
+              <div>
+                <h4 className="lg:text-xl text-center mb-5 ">
+                  Adding Product as:{" "}
+                  <span className="text-blue-800">{user?.email}</span>
+                </h4>
+              </div>
               <div className="mb-6">
                 <label
                   htmlFor="event-name"
