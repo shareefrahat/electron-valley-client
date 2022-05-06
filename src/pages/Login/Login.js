@@ -1,18 +1,29 @@
-import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../firebase.init";
 
 const Login = () => {
+  const [currentUser] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  if (user) {
-  }
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (currentUser || user) {
+      navigate(from, { replace: true });
+    }
+  });
 
   const handleLogin = (e) => {
     e.preventDefault();
