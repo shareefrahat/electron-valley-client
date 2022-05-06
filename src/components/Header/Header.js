@@ -4,9 +4,16 @@ import { MenuAlt1Icon, MenuIcon } from "@heroicons/react/solid";
 
 import logo from "../../images/logo.png";
 import Navbar from "../Navbar/Navbar";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { signOut } from "firebase/auth";
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [user] = useAuthState(auth);
 
+  const handleSignOut = () => {
+    signOut(auth);
+  };
   return (
     <>
       <header>
@@ -30,12 +37,25 @@ const Header = () => {
             <Navbar></Navbar>
           </section>
           <section>
-            <Link
-              to="/login"
-              className="bg-blue-700 text-slate-100 text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded"
-            >
-              LOGIN
-            </Link>
+            {user ? (
+              <div>
+                <button
+                  onClick={handleSignOut}
+                  className="bg-blue-700 text-slate-100 text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded"
+                >
+                  LOGOUT
+                </button>
+              </div>
+            ) : (
+              <div>
+                <Link
+                  to="/login"
+                  className="bg-blue-700 text-slate-100 text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded"
+                >
+                  LOGIN
+                </Link>
+              </div>
+            )}
           </section>
         </div>
         <div className="">
