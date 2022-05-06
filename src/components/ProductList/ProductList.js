@@ -27,8 +27,8 @@ const ProductList = () => {
   };
   return (
     <>
-      <div className="flex flex-row">
-        <section className="w-fit inset-y-0 px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
+      <div className="flex flex-col lg:flex-row p-5 lg:p-0">
+        <section className="lg:w-fit inset-y-0 px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
           <h2 className="text-2xl text-blue-700 font-bold">Manage Product</h2>
           <div>
             <Link
@@ -49,8 +49,8 @@ const ProductList = () => {
             </Link>
           </div>
         </section>
-        <section className="w-full px-20 py-10 ">
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg border border-blue-700">
+        <section className="w-full lg:px-20 py-10">
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg border border-blue-700 overflow-auto">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

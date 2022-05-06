@@ -32,8 +32,8 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <div className="flex flex-row">
-        <section className="w-fit relative inset-y-0  px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
+      <div className="flex flex-col lg:flex-row p-5 lg:p-0">
+        <section className="lg:w-fit relative inset-y-0  px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
           <h2 className="text-2xl text-blue-700 font-bold">Manage Product</h2>
           <div>
             <Link
@@ -54,8 +54,8 @@ const AddProduct = () => {
             </Link>
           </div>
         </section>
-        <section className="w-full px-20 py-10 ">
-          <div className="shadow-md sm:rounded-lg border border-blue-700 p-5 text-left">
+        <section className="w-full lg:px-20 py-10">
+          <div className="shadow-md sm:rounded-lg border border-blue-700 p-5 text-left ">
             <form onSubmit={handleOnSubmit}>
               <div className="mb-6">
                 <label
