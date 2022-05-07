@@ -6,41 +6,41 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div
-        className="relative shadow-md bg-white mx-auto w-fit h-full rounded-md p-4 border-2
+        className="relative shadow-md bg-white mx-auto w-fit h-full rounded-md border border-slate-300
       "
       >
-        <div>
+        <div className="border-b border-b-slate-300">
           <img
-            className="w-[200px] h-[200px] lg:w-[250px] lg:h-[250px] mx-auto rounded-md"
+            className="w-[200px] h-[200px] mx-auto rounded-md p-4"
             src={img}
             alt=""
           />
         </div>
-        <div>
-          <p className="text-lg lg:text-xl font-semibold py-3">{name}</p>
-        </div>
-        <div>
-          <p className="text-md lg:text-xl  text-slate-600 pb-3">{supplier}</p>
-        </div>
-        <div>
-          <p className="text-md lg:text-xl font-semibold text-orange-600 pb-3">
-            ${price}/Unit
-          </p>
-        </div>
-        <div>
-          <p className="text-md lg:text-xl text-blue-700 pb-3">
-            Available: {quantity} Units
-          </p>
-        </div>
-        <div>
-          <p className="w-[200px] h-[50px] md:w-[300px] mx-auto text-justify text-lg overflow-ellipsis">
-            {description}
-          </p>
+        <div className="m-5">
+          <div className="flex flex-row justify-between items-center">
+            <p className="text-md lg:text-xl text-slate-600">{supplier}</p>
+            <p className="text-md lg:text-xl  text-slate-500">
+              <span className="text-red-700 font-semibold">${price}</span>
+              /Unit
+            </p>
+          </div>
+          <div className="flex flex-col justify-center gap-2 my-4">
+            <p className="text-lg lg:text-xl font-semibold text-slate-700">
+              {name}
+            </p>
+
+            <p className="text-md lg:text-xl text-slate-600">
+              Stock: <span className="text-blue-700">{quantity}</span>
+            </p>
+            <p className="w-[200px] h-[50px] md:w-[300px] mx-auto text-justify text-lg overflow-ellipsis font-serif">
+              {description}
+            </p>
+          </div>
         </div>
         <div className="mt-10">
           <Link
             to={`/inventory/${_id}`}
-            className="bg-blue-700 text-white text-md lg:text-2xl px-2 lg:px-4 py-1 rounded hover:bg-orange-600 mt-4"
+            className="w-full block py-1 rounded-md mt-4 lg:text-xl text-blue-700 hover:text-white bg-white hover:bg-blue-700 border-slate-300 border-t transition duration-300 hover:-translate-x-1 hover:scale-90"
           >
             Update
           </Link>
