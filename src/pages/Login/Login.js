@@ -25,13 +25,25 @@ const Login = () => {
 
   useEffect(() => {
     if (currentUser || user) {
-      navigate(from, { replace: true });
     }
   });
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
+
+    fetch("http://localhost:5000/getToken", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.token);
+        navigate(from, { replace: true });
+      });
   };
 
   const handlePasswordReset = async () => {

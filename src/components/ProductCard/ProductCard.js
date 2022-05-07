@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
             alt=""
           />
         </div>
-        <div className="m-5">
+        <div className="w-[300px] h-[250px] mx-auto p-4 overflow-hidden">
           <div className="flex flex-row justify-between items-center">
             <p className="text-md lg:text-xl text-slate-600">{supplier}</p>
             <p className="text-md lg:text-xl  text-slate-500">
@@ -32,15 +32,15 @@ const ProductCard = ({ product }) => {
             <p className="text-md lg:text-xl text-slate-600">
               Stock: <span className="text-blue-700">{quantity}</span>
             </p>
-            <p className="w-[200px] h-[50px] md:w-[300px] mx-auto text-justify text-lg overflow-ellipsis font-serif">
+            <p className=" mx-auto text-justify text-lg relative overflow-ellipsis font-serif">
               {description}
             </p>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="m-4">
           <Link
             to={`/inventory/${_id}`}
-            className="w-full block py-1 rounded-md mt-4 lg:text-xl text-blue-700 hover:text-white bg-white hover:bg-blue-700 border-slate-300 border-t transition duration-300 hover:-translate-x-1 hover:scale-90"
+            className="w-full block py-1 rounded-md lg:text-xl bg-blue-700 hover:text-white text-white hover:bg-blue-700 border-slate-300 border-t transition duration-300 hover:-translate-x-1 hover:scale-90"
           >
             Update
           </Link>
