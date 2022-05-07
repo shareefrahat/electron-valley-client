@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  useAuthState,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
@@ -8,9 +7,9 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
-  const [currentUser] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,32 +17,23 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+  const [token] = useToken(user);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    if (currentUser || user) {
-    }
-  });
+  if (token) {
+    navigate(from, { replace: true });
+  }
+  // useEffect(() => {
+  //   if (currentUser || user) {
+  //   }
+  // });
 
   const handleLogin = async (e) => {
     e.preventDefault();
     await signInWithEmailAndPassword(email, password);
-
-    fetch("http://localhost:5000/getToken", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("accessToken", data.token);
-        navigate(from, { replace: true });
-      });
   };
 
   const handlePasswordReset = async () => {

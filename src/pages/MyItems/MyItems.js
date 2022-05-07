@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import Spinner from "../../components/Spinner/Spinner";
 import auth from "../../firebase.init";
 
 const MyItems = () => {
@@ -12,7 +13,11 @@ const MyItems = () => {
 
   useEffect(() => {
     const getItems = () => {
-      fetch(url)
+      fetch(url, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => setProducts(data));
     };
@@ -23,9 +28,17 @@ const MyItems = () => {
     <div>
       <p>My Items is here {user?.email}</p>
       <div>
-        {products?.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
-        ))}
+        {!products ? (
+          <div>
+            <Spinner></Spinner>
+          </div>
+        ) : (
+          <div>
+            {products?.map((product) => (
+              <ProductCard key={product._id} product={product}></ProductCard>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

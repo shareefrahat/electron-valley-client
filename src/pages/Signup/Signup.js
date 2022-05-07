@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  useAuthState,
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
@@ -8,9 +7,9 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 
 const Signup = () => {
-  const [currentUser] = useAuthState(auth);
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [passwordInput, setPasswordInput] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
@@ -18,16 +17,15 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
+  const [token] = useToken(user);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    if (currentUser || user) {
-      navigate(from, { replace: true });
-    }
-  });
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handlePassword = (e) => {
     const password = e.target.value;
