@@ -17,7 +17,7 @@ const SocialLogin = () => {
           className="flex flex-row justify-center items-center border border-blue-600 rounded p-1 mx-auto shadow-md"
         >
           <img
-            className={`"w-6 md:w-8 mx-2" ${loading ? "animate-spin" : ""}`}
+            className={`w-6 md:w-8 mx-2 ${loading ? "animate-spin" : ""} `}
             src={googleLogo}
             alt=""
           />

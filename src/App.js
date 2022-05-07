@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AddProduct from "./components/AddProduct/AddProduct";
@@ -79,6 +80,28 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          // Define default options
+          className: "text-lg lg:text-xl font-serif border border-blue-700",
+          duration: 5000,
+          style: {
+            background: "white",
+            color: "black",
+          },
+          // Default options for specific types
+          success: {
+            duration: 5000,
+            theme: {
+              primary: "green",
+              secondary: "black",
+            },
+          },
+        }}
+      />
     </div>
   );
 }

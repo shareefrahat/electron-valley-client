@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../firebase.init";
@@ -14,6 +16,8 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,6 +32,15 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
+  };
+
+  const handlePasswordReset = async () => {
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast.success("Password reset email sent", { id: "passwordReset" });
+    } else {
+      toast.error("Please enter your email", { id: "passwordReset" });
+    }
   };
   return (
     <>
@@ -107,9 +120,13 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <p className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">
+              <button
+                onClick={handlePasswordReset}
+                type="button"
+                className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
+              >
                 Lost Password?
-              </p>
+              </button>
             </div>
             <button
               type="submit"

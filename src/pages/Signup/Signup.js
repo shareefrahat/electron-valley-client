@@ -4,6 +4,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../firebase.init";
@@ -51,6 +52,7 @@ const Signup = () => {
       setPasswordMatch(true);
       await createUserWithEmailAndPassword(email, password);
       await updateProfile({ displayName: name });
+      toast.success("Verification email sent", { id: "signup" });
     }
   };
   return (
