@@ -1,7 +1,8 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import ProductCard from "../../components/ProductCard/ProductCard";
+import { Link } from "react-router-dom";
+import MyItemsCard from "../../components/MyItemsCard/MyItemsCard";
 import auth from "../../firebase.init";
 import userImg from "../../images/user.png";
 const MyItems = () => {
@@ -22,7 +23,7 @@ const MyItems = () => {
         .then((data) => setProducts(data));
     };
     getItems();
-  }, [user, url]);
+  }, [user, url, products]);
 
   const handleSignOut = () => {
     signOut(auth);
@@ -37,18 +38,26 @@ const MyItems = () => {
       </section>
       <section className="flex flex-col-reverse lg:flex-row justify-evenly items-center gap-10">
         <div>
-          <div>
-            {!products ? (
+          <div className="border border-blue-700 p-5 rounded">
+            {products?.length === 0 ? (
               <div>
-                <p>You don't have any product right now</p>
+                <h4 className="text-md lg:text-xl my-4 text-red-700">
+                  You did not add any product yet!
+                </h4>
+                <Link
+                  to="/addProduct"
+                  className="text-md lg:text-xl bg-blue-700 text-white px-4 py-1 rounded hover:bg-blue-800 my-4"
+                >
+                  Add New
+                </Link>
               </div>
             ) : (
               <div>
                 {products?.map((product) => (
-                  <ProductCard
+                  <MyItemsCard
                     key={product._id}
                     product={product}
-                  ></ProductCard>
+                  ></MyItemsCard>
                 ))}
               </div>
             )}

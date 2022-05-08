@@ -21,7 +21,9 @@ const ProductList = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          toast.success("Successfully Deleted", { id: "deleted" });
+          if (data) {
+            toast.success("Successfully Deleted", { id: "deleted" });
+          }
         });
     }
   };
