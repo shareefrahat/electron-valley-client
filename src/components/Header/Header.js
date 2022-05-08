@@ -41,7 +41,7 @@ const Header = () => {
               <div>
                 <button
                   onClick={handleSignOut}
-                  className="bg-blue-700 text-slate-100 text-md lg:text-lg px-2 lg:px-4 py-1 lg:py-2 rounded"
+                  className="bg-blue-700 text-slate-100 text-md lg:text-lg px-2 lg:px-4 py-1  rounded inline-block"
                 >
                   LOGOUT
                 </button>

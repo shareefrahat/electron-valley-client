@@ -48,11 +48,11 @@ const Footer = () => {
           </div>
           <div>
             <h5 className="text-md text-slate-300 font-bold border-b-2 border-b-slate-300 w-fit mx-auto lg:mx-0">
-              CONCERN
+              DOCUMENTATION
             </h5>
             <ul className="my-5 text-slate-300 flex flex-col gap-2">
               <li>
-                <a href="/">Delivery</a>
+                <a href="/">Return Policy</a>
               </li>
               <li>
                 <a href="/">Legal Notice</a>
