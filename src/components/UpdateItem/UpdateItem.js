@@ -38,7 +38,7 @@ const UpdateItem = ({ product }) => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/update/${_id}`;
+    const url = `https://electron-valley.herokuapp.com/update/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: {

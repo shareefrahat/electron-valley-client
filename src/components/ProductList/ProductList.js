@@ -15,7 +15,7 @@ const ProductList = () => {
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure to delete?");
     if (confirm) {
-      const url = `http://localhost:5000/products/${id}`;
+      const url = `https://electron-valley.herokuapp.com/products/${id}`;
       fetch(url, {
         method: "DELETE",
       })

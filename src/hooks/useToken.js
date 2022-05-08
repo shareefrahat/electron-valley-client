@@ -7,7 +7,7 @@ const useToken = (user) => {
     const email = user?.user?.email;
 
     if (email) {
-      fetch("http://localhost:5000/getToken", {
+      fetch("https://electron-valley.herokuapp.com/getToken", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

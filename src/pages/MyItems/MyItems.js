@@ -10,7 +10,7 @@ const MyItems = () => {
   const [products, setProducts] = useState();
 
   const email = user?.email;
-  const url = `http://localhost:5000/userItems?owner=${email}`;
+  const url = `https://electron-valley.herokuapp.com/userItems?owner=${email}`;
 
   useEffect(() => {
     const getItems = () => {

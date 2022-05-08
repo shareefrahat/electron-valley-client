@@ -55,7 +55,7 @@ const InventoryForm = ({ product }) => {
   };
   const handleUpdate = (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/update/${_id}`;
+    const url = `https://electron-valley.herokuapp.com/update/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: {
