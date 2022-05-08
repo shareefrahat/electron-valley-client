@@ -42,14 +42,14 @@ const InventoryForm = ({ product }) => {
 
   const handlePrice = (e) => {
     const { price, ...rest } = update;
-    const newPrice = e.target.value;
+    const newPrice = parseInt(e.target.value);
     const newProduct = { price: newPrice, ...rest };
     setUpdate(newProduct);
   };
 
   const handleQuantity = (e) => {
     const { quantity, ...rest } = update;
-    const newQuantity = e.target.value;
+    const newQuantity = parseInt(e.target.value);
     const newProduct = { quantity: newQuantity, ...rest };
     setUpdate(newProduct);
   };
