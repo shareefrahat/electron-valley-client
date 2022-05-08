@@ -1,11 +1,13 @@
 import { ClipboardListIcon, PlusCircleIcon } from "@heroicons/react/solid";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const AddProduct = () => {
   const [user] = useAuthState(auth);
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const owner = user?.email;
@@ -16,6 +18,14 @@ const AddProduct = () => {
     const quantity = e.target.quantity.value;
     const description = e.target.details.value;
 
+    if (price <= 0) {
+      toast.error("Invalid amount of price", { id: "priceToast" });
+      return;
+    }
+    if (quantity <= 0) {
+      toast.error("Invalid amount of quantity", { id: "quantityToast" });
+      return;
+    }
     const product = {
       owner,
       name,
@@ -35,9 +45,12 @@ const AddProduct = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        alert("Products Added Successfully");
-        e.target.reset();
-        console.log("Success:", data);
+        if (data) {
+          toast.success("Products successfully added", { id: "successToast" });
+          e.target.reset();
+        } else {
+          toast.error("Something went wrong!", { id: "errorToast" });
+        }
       });
   };
   return (
@@ -117,7 +130,7 @@ const AddProduct = () => {
                   id="supplier"
                   name="supplier"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Paste image link here"
+                  placeholder="Supplier name"
                   required
                 />
               </div>
@@ -133,7 +146,7 @@ const AddProduct = () => {
                   id="price"
                   name="price"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Paste image link here"
+                  placeholder="Product price"
                   required
                 />
               </div>
@@ -149,7 +162,7 @@ const AddProduct = () => {
                   id="quantity"
                   name="quantity"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Paste image link here"
+                  placeholder="Product Quantity"
                   required
                 />
               </div>

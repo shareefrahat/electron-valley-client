@@ -33,7 +33,7 @@ const Navbar = () => {
     {
       id: 5,
       path: "/myitems",
-      name: "MY ITEMS",
+      name: "MY STUFF",
       route: "private",
     },
     {
