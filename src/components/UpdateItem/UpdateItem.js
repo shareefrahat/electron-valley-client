@@ -56,19 +56,44 @@ const UpdateItem = ({ product }) => {
 
   return (
     <>
-      <div className="my-10 w-fit mx-auto">
-        <img src={img} className="w-40 mx-auto" alt="" />
-        <p>Name: {name}</p>
-        <p>Supplier: {supplier}</p>
-        <p>Price: {price}</p>
-        <p>Description: {description}</p>
-        <p>Quantity: {quantity}</p>
-
+      <div className="my-10 w-fit mx-auto bg-white border border-blue-700 rounded p-5">
+        <div>
+          <h2 className="text-lg lg:text-xl font-semibold font-serif text-blue-700 border border-blue-700 py-2 rounded mb-10">
+            Update Stock
+          </h2>
+        </div>
+        <div className="border border-slate-300 my-5">
+          <img
+            className="w-[200px] h-[200px] mx-auto rounded-md p-4"
+            src={img}
+            alt=""
+          />
+        </div>
+        <div className="w-[300px] my-5">
+          <div className="flex flex-row justify-between items-center">
+            <p className="text-md lg:text-xl text-slate-600">{supplier}</p>
+            <p className="text-md lg:text-xl  text-slate-500">
+              <span className="text-red-700 font-semibold">${price}</span>
+              /Unit
+            </p>
+          </div>
+          <div className="flex flex-col justify-center gap-2 mt-4">
+            <p className="text-lg lg:text-xl text-left font-semibold text-slate-700">
+              {name}
+            </p>
+            <p className="mx-auto text-left text-lg relative overflow-ellipsis font-serif">
+              {description}
+            </p>
+            <p className="text-md lg:text-xl text-slate-600">
+              Quantity: <span className="text-blue-700">{quantity}</span>
+            </p>
+          </div>
+        </div>
         <div className="my-5">
           <button
             onClick={handleDeliver}
             type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 text-md"
           >
             Delivered
           </button>
@@ -76,9 +101,9 @@ const UpdateItem = ({ product }) => {
           <div className="my-5">
             <label
               htmlFor="restock"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="block mb-2 text-left text-lg font-medium text-gray-900 dark:text-gray-300"
             >
-              Restock Amount
+              Restock Quantity:
             </label>
             <input
               onChange={getRestock}
@@ -92,7 +117,7 @@ const UpdateItem = ({ product }) => {
             <button
               onClick={handleRestock}
               type="button"
-              className="text-white my-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white my-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 text-md"
             >
               Restock
             </button>
