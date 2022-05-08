@@ -6,7 +6,7 @@
 
 - Private Repository Link: https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-share
 
-- Live Site Link: https://electron-valley.web.app/
+- Live Site Link: https://electron-valley.web.app
 
 ## Features
 
