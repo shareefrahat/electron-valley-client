@@ -26,10 +26,6 @@ const Login = () => {
   if (token) {
     navigate(from, { replace: true });
   }
-  // useEffect(() => {
-  //   if (currentUser || user) {
-  //   }
-  // });
 
   const handleLogin = async (e) => {
     e.preventDefault();

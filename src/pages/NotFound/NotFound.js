@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <>
       <div className="p-5 flex flex-col gap-5">
-        <h4 className=" text-2xl text-red-600">Opps! Wrong Gateway!</h4>
+        <h4 className=" text-2xl text-red-700">Opps! Wrong Gateway!</h4>
         <img className="w-[300px] mx-auto" src={errorImg} alt="" />
         <p className="text-xl">
           Your route
