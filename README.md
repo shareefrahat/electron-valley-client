@@ -10,13 +10,19 @@
 
 ## Features
 
-<!-- - Responsive for both mobile & large device.
-- Service card has transition on hover.
-- A private route which will navigate after login.
-- Shows Toast for successful and error messages.
+- Customizable swiper slider.
 - Spinner for loading states.
-- Accordion for blogs or FAQ sections.
-- Login and Logout Toggle system, and so on. -->
+- Private Route which will navigate after login.
+- Different nav menu with transition for mobile screen.
+- Dynamic Toast for successful and error messages.
+- Dynamic update form to update product from both ui and database.
+- Individual user items shown after login.
+- Dynamic delete button to delete product from both ui and database.
+- A fancy service and sponsor section.
+- Special links and subscription section in footer.
+- Adding products form to add new items both in ui and database.
+- My Stuff page product API is secured with JWT.
+- Full Responsive for both mobile and laptop.
 
 ## Techs Stuff
 
@@ -29,3 +35,4 @@
 - Flowbite Library
 - SwiperJS
 - React Hot Toast
+- JSON Web Token
