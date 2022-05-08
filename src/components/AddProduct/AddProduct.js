@@ -43,8 +43,8 @@ const AddProduct = () => {
   return (
     <div>
       <div className="flex flex-col lg:flex-row p-5 lg:p-0">
-        <section className="lg:w-fit relative inset-y-0  px-10 py-10  border border-blue-700 shadow-md flex flex-col gap-10">
-          <h2 className="text-2xl text-blue-700 font-bold">Manage Product</h2>
+        <section className="lg:w-fit  my-10 relative inset-y-0  px-10 py-10  border border-blue-700 shadow-md rounded flex flex-col gap-10">
+          <h2 className="text-2xl text-blue-700 font-bold">Manage Inventory</h2>
           <div>
             <Link
               className="flex flex-row items-center hover:text-blue-700"
@@ -65,7 +65,7 @@ const AddProduct = () => {
           </div>
         </section>
         <section className="w-full lg:px-20 py-10">
-          <div className="shadow-md sm:rounded-lg border border-blue-700 p-5 text-left ">
+          <div className="shadow-md sm:rounded-lg border border-blue-700 p-5 text-left rounded">
             <form onSubmit={handleOnSubmit}>
               <div>
                 <h4 className="lg:text-xl text-center mb-5 ">

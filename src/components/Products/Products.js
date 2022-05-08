@@ -29,12 +29,12 @@ const Products = () => {
           </div>
         )}
       </div>
-      <div className="my-10">
+      <div className="mt-20">
         <Link
           to="/manage"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md lg:text-xl px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          className="bg-white text-blue-700 hover:bg-blue-700 hover:text-white   rounded-lg text-md lg:text-xl px-6 py-2.5 mr-2 mb-2  border border-blue-700 font-semibold"
         >
-          Manage
+          Manage Inventory
         </Link>
       </div>
     </>
