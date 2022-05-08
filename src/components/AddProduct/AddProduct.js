@@ -14,8 +14,8 @@ const AddProduct = () => {
     const name = e.target.name.value;
     const img = e.target.img.value;
     const supplier = e.target.supplier.value;
-    const price = e.target.price.value;
-    const quantity = e.target.quantity.value;
+    const price = parseInt(e.target.price.value);
+    const quantity = parseInt(e.target.quantity.value);
     const description = e.target.details.value;
 
     if (price <= 0) {
