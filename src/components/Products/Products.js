@@ -34,7 +34,7 @@ const Products = () => {
           to="/manage"
           className="bg-white text-blue-700 hover:bg-blue-700 hover:text-white   rounded-lg text-md lg:text-xl px-6 py-2.5 mr-2 mb-2  border border-blue-700 font-semibold"
         >
-          Manage Inventory
+          Manage Inventories
         </Link>
       </div>
     </>
