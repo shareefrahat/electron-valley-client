@@ -6,7 +6,7 @@ const Blog3 = () => {
       <div className="text-justify border border-blue-700 rounded p-5 lg:text-xl">
         <div>
           <h4 className="font-semibold text-center mb-5">
-            Difference between SQL & NoSQL
+            Differences between sql and nosql databases.
           </h4>
         </div>
         <div className="flex flex-col gap-4">
